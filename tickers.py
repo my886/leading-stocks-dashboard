@@ -1,0 +1,63 @@
+# Stock universe with theme mapping, mirroring the dashboard image
+STOCKS = [
+    {"ticker": "CRIT", "company": "Critical Materials Corp",    "theme": "Rare Earths"},
+    {"ticker": "UAMY", "company": "United States Antimony",     "theme": "Rare Earths"},
+    {"ticker": "SKYT", "company": "SkyWater Technology",        "theme": "Semis"},
+    {"ticker": "SNDK", "company": "Sandisk",                    "theme": "Semis"},
+    {"ticker": "KTOS", "company": "Kratos Defense",             "theme": "Aerospace Defense"},
+    {"ticker": "BE",   "company": "Bloom Energy",               "theme": "Energy"},
+    {"ticker": "APLD", "company": "Applied Digital",            "theme": "Data Center"},
+    {"ticker": "AVAV", "company": "AeroVironment",              "theme": "Defense"},
+    {"ticker": "KRMN", "company": "Karman Space & Defense",     "theme": "Space & Defense"},
+    {"ticker": "RCAT", "company": "Red Cat",                    "theme": "Drones"},
+    {"ticker": "PDYN", "company": "Palladyne AI",               "theme": "AVs"},
+    {"ticker": "USAR", "company": "USA Rare Earths",            "theme": "Rare Earths"},
+    {"ticker": "AEVA", "company": "Aeva Technologies",          "theme": "AVs"},
+    {"ticker": "NVTS", "company": "Navitas Semiconductor",      "theme": "Semis"},
+    {"ticker": "BKSY", "company": "BlackSky",                   "theme": "Space"},
+    {"ticker": "OKLO", "company": "Oklo",                       "theme": "Nuclear"},
+    {"ticker": "EOSE", "company": "Eos Energy",                 "theme": "Batteries"},
+    {"ticker": "DPRO", "company": "Draganfly",                  "theme": "Drones"},
+    {"ticker": "ASPI", "company": "ASP Isotopes",               "theme": "Nuclear"},
+    {"ticker": "SMR",  "company": "NuScale Power",              "theme": "Nuclear"},
+    {"ticker": "NNE",  "company": "Nano Nuclear Energy",        "theme": "Nuclear"},
+    {"ticker": "SERV", "company": "Serve Robotics",             "theme": "Robotics"},
+    {"ticker": "ASTS", "company": "AST SpaceMobile",            "theme": "Space"},
+    {"ticker": "ABCL", "company": "AbCellera",                  "theme": "BioTech"},
+    {"ticker": "RKLB", "company": "Rocket Lab",                 "theme": "Space"},
+    {"ticker": "ALMU", "company": "Aeluma",                     "theme": "Semis"},
+    {"ticker": "UUUU", "company": "Energy Fuels",               "theme": "Nuclear"},
+    {"ticker": "ACMR", "company": "ACM Research",               "theme": "Semis"},
+    {"ticker": "ONDS", "company": "Ondas",                      "theme": "Drones"},
+    {"ticker": "AXTI", "company": "AXT Inc",                    "theme": "Materials"},
+    {"ticker": "IREN", "company": "Iris Energy",                "theme": "Data Center"},
+    {"ticker": "LTBR", "company": "Lightbridge",                "theme": "Nuclear"},
+    {"ticker": "PL",   "company": "Planet Labs",                "theme": "Space"},
+    {"ticker": "HUT",  "company": "Hut 8",                      "theme": "Data Center"},
+]
+
+# Color mapping for themes
+THEME_COLORS = {
+    "Rare Earths":      "#4CAF50",
+    "Semis":            "#2196F3",
+    "Aerospace Defense":"#9C27B0",
+    "Energy":           "#FF9800",
+    "Data Center":      "#00BCD4",
+    "Defense":          "#9C27B0",
+    "Space & Defense":  "#9C27B0",
+    "Space":            "#3F51B5",
+    "Drones":           "#F44336",
+    "AVs":              "#009688",
+    "Nuclear":          "#FF5722",
+    "Batteries":        "#8BC34A",
+    "Robotics":         "#E91E63",
+    "BioTech":          "#00BCD4",
+    "Materials":        "#795548",
+}
+
+# Full universe for RS Rank calculation (S&P 500 subset + our stocks)
+RS_UNIVERSE = [s["ticker"] for s in STOCKS] + [
+    "AAPL", "MSFT", "NVDA", "GOOGL", "AMZN", "META", "TSLA", "AMD",
+    "INTC", "QCOM", "MU", "AVGO", "TSM", "ASML", "AMAT", "LRCX",
+    "SPY", "QQQ", "IWM",
+]

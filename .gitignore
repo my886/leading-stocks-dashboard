@@ -1,0 +1,55 @@
+# Virtual environment
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pycache
+
+# Streamlit cache
+.streamlit/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+
+# uv
+.uv/
+
+# yfinance / requests cache (sqlite DBs created at runtime)
+*.db
+*.sqlite
+*.sqlite3
+
+# Jupyter (if notebooks are ever added)
+.ipynb_checkpoints/
+*.ipynb
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+
+# Distribution / packaging (if project is ever published)
+dist/
+build/
+*.egg-info/
+
+# Personal learning journal — private, not relevant to collaborators
+docs/LEARNING.md
+
+# Images (large binary files, not source code)
+*.jpg
+*.jpeg
+*.png
+*.gif
