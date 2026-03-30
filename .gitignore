@@ -48,6 +48,9 @@ build/
 # Personal learning journal — private, not relevant to collaborators
 docs/LEARNING.md
 
+# Claude Code project instructions — internal dev context, not for public repo
+CLAUDE.md
+
 # Images (large binary files, not source code)
 *.jpg
 *.jpeg
