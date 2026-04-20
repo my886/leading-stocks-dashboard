@@ -2,7 +2,7 @@
 
 A real-time stock screening dashboard inspired by leading stock trackers, built with Python and Streamlit. Data is sourced entirely from Yahoo Finance — no API keys required.
 
-![Dashboard Preview](26-01-13\ 18-58-23\ 3740.jpg)
+
 
 ## What it does
 
