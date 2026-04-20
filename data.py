@@ -1,10 +1,18 @@
 import yfinance as yf
 import pandas as pd
+import requests_cache
 from datetime import datetime, timedelta
 import streamlit as st
 
-# Cache TTL: 1 hour
+# Cache TTL: 1 hour — applies to both the HTTP cache and st.cache_data
 CACHE_TTL = 3600
+
+# Persist yfinance HTTP responses to disk so app restarts don't re-fetch.
+# requests_cache intercepts the underlying requests calls yfinance makes,
+# stores raw responses in a local SQLite file, and replays them on restart
+# if they're younger than CACHE_TTL. Without this, st.cache_data only
+# survives while the process is alive.
+requests_cache.install_cache("yfinance_cache", expire_after=CACHE_TTL)
 
 
 @st.cache_data(ttl=CACHE_TTL, show_spinner=False)
@@ -42,6 +50,24 @@ def fetch_info(tickers: tuple) -> dict[str, dict]:
         try:
             t = yf.Ticker(ticker)
             info = t.info
+
+            # Next earnings date — yfinance calendar format varies by version
+            earnings_date = None
+            try:
+                cal = t.calendar
+                if isinstance(cal, pd.DataFrame) and not cal.empty:
+                    # Columns are Timestamps in newer yfinance
+                    dates = [c for c in cal.columns if hasattr(c, "date")]
+                    if dates:
+                        earnings_date = str(dates[0].date())
+                elif isinstance(cal, dict):
+                    ed = cal.get("Earnings Date") or cal.get("earningsDate")
+                    if ed:
+                        d = ed[0] if isinstance(ed, list) else ed
+                        earnings_date = str(d.date()) if hasattr(d, "date") else str(d)[:10]
+            except Exception:
+                pass
+
             info_map[ticker] = {
                 "market_cap":    info.get("marketCap"),
                 "ps_ratio":      info.get("priceToSalesTrailing12Months"),
@@ -50,6 +76,7 @@ def fetch_info(tickers: tuple) -> dict[str, dict]:
                 "company_name":  info.get("shortName", ticker),
                 "website":       info.get("website", ""),
                 "logo_url":      info.get("logo_url", ""),
+                "earnings_date": earnings_date,
             }
         except Exception:
             info_map[ticker] = {}
