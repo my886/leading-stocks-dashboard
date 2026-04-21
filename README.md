@@ -48,7 +48,7 @@ uv sync
 # 3. Run
 streamlit run app.py # Or skip activation entirely and just use:
 
-cd E:\claude_code\dashboard_260320
+cd \path_to_folder
 uv run streamlit run app.py     # uv always uses the project's own .venv
 ```
 
