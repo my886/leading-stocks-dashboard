@@ -36,7 +36,7 @@ A real-time stock screening dashboard inspired by leading stock trackers, built 
 ```bash
 # 1. Clone the repo
 git clone <repo-url>
-cd dashboard_260320
+cd leading-stocks-dashboard
 
 # 2. Create virtual environment and install dependencies
 uv venv --python 3.12
